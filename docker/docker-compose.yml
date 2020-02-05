@@ -25,6 +25,7 @@ services:
       - DATABASE_URL=mysql://${DATABASE_USER}:${DATABASE_PASSWORD}@db:3306/${DATABASE_NAME}?serverVersion=5.7
     volumes:
       - ../src:/var/www
+      - ./php-fpm/conf.d/custom.dev.ini/:/usr/local/etc/php/conf.d/custom.ini
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin

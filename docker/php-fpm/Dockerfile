@@ -8,6 +8,11 @@ RUN apk --update --no-cache add git
 
 RUN docker-php-ext-install pdo_mysql
 
+# install extensions
+# intl, zip, soap
+RUN apk add --update --no-cache libintl icu icu-dev libxml2-dev \
+    && docker-php-ext-install intl soap
+
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
